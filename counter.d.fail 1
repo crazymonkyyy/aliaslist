@@ -1,0 +1,26 @@
+import std;
+int timetoint(string s){
+	int o;
+	o+=(s[7]-'0')*1;
+	o+=(s[6]-'0')*10;
+	o+=(s[4]-'0')*60;
+	o+=(s[3]-'0')*600;
+	return o;
+}
+
+template counter(){
+	template access(int i){
+		enum time=__TIME__;
+	}
+	template get(int i=0,string time_=__TIME__){
+		static if(timetoint(access!i.time)<timetoint(time_)){
+			alias get=i;
+		} else {
+			alias get=get!(i+1,time_);
+	}}
+}
+void main(){
+	counter!().get!().writeln;
+	counter!().get!().writeln;
+	counter!().get!().writeln;
+}

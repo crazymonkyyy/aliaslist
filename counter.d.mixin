@@ -1,0 +1,21 @@
+//int timetoint(string s){
+//	int o;
+//	o+=(s[7]-'0')*1;
+//	o+=(s[6]-'0')*10;
+//	o+=(s[4]-'0')*60;
+//	o+=(s[3]-'0')*600;
+//	return o;
+//}
+//template counter(){
+//	template access(int i){
+//		enum time=timetoint(__TIME__);
+//		#line time
+//	}
+import std;
+template linenumber(int i=__LINE__){
+	enum linenumber=mixin("__LINE__");
+}
+void main(){
+	linenumber!().writeln;
+	linenumber!().writeln;
+}
